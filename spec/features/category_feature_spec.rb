@@ -19,8 +19,8 @@ describe 'Feature Test: Category', :type => :feature do
 
     context "not logged in" do
 
-      it 'does not display "Add To Cart" button' do
-        expect(page).to_not have_content "Add To Cart"
+      it 'does not display "Add to Cart" button' do
+        expect(page).to_not have_content "Add to Cart"
       end
 
     end
@@ -31,7 +31,7 @@ describe 'Feature Test: Category', :type => :feature do
         login_as(@user, scope: :user)
       end
 
-      it 'does display "Add To Cart" button' do
+      it 'does display "Add to Cart" button' do
         visit category_path(@category)
         expect(page).to have_selector("input[type=submit][value='Add to Cart']")
       end
