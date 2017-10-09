@@ -14,7 +14,7 @@
            <!--  nav here -->
            <% if current_user %>
              <ul>
-                 <li>Signed in as <%= "#{@user.email}" %></li>
+                 <li><%= "Signed in as #{@user.email}" %></li>
                  <li><%= link_to "Store Home", store_path %></li>
                  <% if !!@cart %>
                    <li><%= link_to "Cart", cart_path(current_cart) %></li>
@@ -30,7 +30,7 @@
                  <a href="/signin">Sign In</a>
                </li>
                <li>
-                 <a href="/signup">Sign Up</a>
+                 <a href="/users/new">Sign Up</a>
                </li>
              </ul>
            <% end %>

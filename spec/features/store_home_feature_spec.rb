@@ -70,6 +70,7 @@ describe 'Feature Test: Store', :type => :feature do
         end
 
         it "tells the user who they are signed in as" do
+          binding.pry
           visit store_path
           expect(page).to have_content("Signed in as #{@user.email}")
         end
