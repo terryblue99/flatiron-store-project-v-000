@@ -1,18 +1,40 @@
-<nav class="">
-  <% if current_user %>
-    <ul>
-        <li>Signed in as <%= "#{current_user.email}" %></li>
-        <li><%= link_to "Store Home", store_path %></li>
-        <% if !!@cart %>
-          <li><%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
-        <li><%= link_to "Sign Out", logout_path, :method => "delete" %></li>
-    </ul>
-  <% else %>
-    <ul>
-        <li><%= link_to "Store Home", store_path %></li>
-        <li><%= link_to "Sign In", "/signin" %></a></li>
-        <li><%= link_to "Sign Up", "/signup" %></a></li>
-    </ul>
-  <% end %>
-</nav>
+<!--  navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+           <!--  nav here -->
+           <% if current_user %>
+             <ul>
+                 <li>Signed in as <%= "#{@user.email}" %></li>
+                 <li><%= link_to "Store Home", store_path %></li>
+                 <% if !!@cart %>
+                   <li><%= link_to "Cart", cart_path(current_cart) %></li>
+                 <% end %>
+                 <li><%= link_to "Sign Out", "/sessions/destroy", :method => "delete" %></li>
+             </ul>
+           <% else %>
+             <ul>
+               <li>
+                 <a href="/">Store Home</a>
+               </li>
+               <li>
+                 <a href="/signin">Sign In</a>
+               </li>
+               <li>
+                 <a href="/signup">Sign Up</a>
+               </li>
+             </ul>
+           <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>

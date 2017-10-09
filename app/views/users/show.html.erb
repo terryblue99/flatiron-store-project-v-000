@@ -1,0 +1,13 @@
+<h1>Show User</h1>
+
+<% if session[:sign_in] == "first" %>
+  <h2>Welcome back to our store!</h2>
+  <% session[:sign_in] = "not first" %>
+<% end %>
+
+<ul>
+  <li>Name: <%= @user.name %> </li>
+  <li>Mood: <%= @user.email %> </li>
+</ul>
+<%= link_to("Edit", edit_user_path(@user)) %>
+<%= link_to "Log Out", {:controller => "sessions", :action => "destroy"}, :method => :delete%>
