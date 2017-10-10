@@ -1,10 +1,10 @@
 <% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
+  <%= link_to category.title, category_path(category) %> |
 <% end %>
 <br><br>
 <% @items.each do |item| %>
   <% if item.inventory > 0 %>
-    <%= item.title %> | <%= "$#{item.price.to_f/100}" %>
+    <%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %>
     <%= button_to 'Add to Cart', line_items_path(item_id: item) %><br>
   <% end %>
 <% end %>

@@ -3,6 +3,3 @@
   <% session[:sign_in] = "not first" %>
 <% end %>
 <br>
-<%= @user.email %>
-<br><br>
-<%= link_to "Sign Out", {:controller => "sessions", :action => "destroy"}, :method => :delete%>

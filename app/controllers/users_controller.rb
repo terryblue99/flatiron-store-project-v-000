@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if User.new(user_params).save
       session[:user_id] = User.last.id
       @user = User.last
-      redirect_to user_path(@user)
+      redirect_to store_path(@user)
     else
       redirect_to new_user_path
     end
