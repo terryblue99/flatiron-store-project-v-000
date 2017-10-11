@@ -1,6 +1,7 @@
 1	Get through model tests first
 
 User
+
     has_many :carts
     belongs_to :current_cart, class_name: “Cart” # needs current_cart_id on user table
 
@@ -8,9 +9,9 @@ User
 
         User.create(name: “Avi”, email: “avit@flatiron.com”, password: “123456789”
 
-carts table
+    carts table
 
-	Has to have a user_id attribute
+	   Has to have a user_id attribute
 
 2	Feature Test: Category
 

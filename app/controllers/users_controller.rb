@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    before_action :authenticate_user!
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
