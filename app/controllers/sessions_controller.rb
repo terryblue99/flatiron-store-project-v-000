@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    if logged_in?
+    if user_signed_in?
       redirect_to user_path(current_user)
     else
       session[:sign_in] = "first"
