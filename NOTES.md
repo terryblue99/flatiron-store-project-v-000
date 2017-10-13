@@ -2,7 +2,7 @@ Tests Sequence
 
 1	Model tests:
 
-    User
+    . User
 
       has_many :carts
       belongs_to :current_cart, class_name: "Cart" # needs current_cart_id on user table
@@ -15,10 +15,11 @@ Tests Sequence
 
     . Category
     . Item
-      Line Item
-      Cart
+    . Line Item
+    . Cart
 
 2	Feature Tests:
 
     . Store
     . Category
+      Cart
