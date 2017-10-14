@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user, foreign_key: "current_cart_id"
+  belongs_to :user #, foreign_key: "current_cart_id"
   has_many :line_items
   has_many :items, :through => :line_items
 
@@ -24,8 +24,8 @@ class Cart < ActiveRecord::Base
 
   end
 
-  def self.cart_checkout(current_cart)
-    current_cart.line_items.each do |line_item|
+  def cart_checkout
+    self.line_items.each do |line_item|
       item = line_item.item
       item.inventory = line_item.item.inventory - line_item.quantity
       item.save 

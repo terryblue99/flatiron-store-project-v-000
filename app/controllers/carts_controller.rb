@@ -6,14 +6,16 @@ class CartsController < ApplicationController
 
   def checkout
     session[:checkout] = "no"
-    @current_cart = Cart.cart_checkout(@current_cart)
+    @current_cart.cart_checkout
+    current_user.current_cart = nil
+    current_user.save
     redirect_to cart_path
   end
 
   private
 
     def set_cart
-      @current_cart = Cart.find_by(:id => current_user.current_cart_id)
+      @current_cart = Cart.find_by(:id => params[:id])
     end
 
 end
