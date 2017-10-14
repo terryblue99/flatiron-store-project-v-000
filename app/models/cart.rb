@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user #, foreign_key: "current_cart_id"
+  belongs_to :user
   has_many :line_items
   has_many :items, :through => :line_items
 

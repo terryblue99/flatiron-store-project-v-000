@@ -22,4 +22,4 @@ Tests Sequence
 
     . Store
     . Category
-      Cart
+    . Cart

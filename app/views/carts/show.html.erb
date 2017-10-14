@@ -2,6 +2,7 @@
 <h1>Your Cart</h1>
 
 <%= render partial: 'cart', locals: {cart: @current_cart} %>
+
 <% if !session[:checkout] %>
   <%= button_to 'Checkout', checkout_path %>
 <% end %>
