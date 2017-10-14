@@ -2,15 +2,12 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :checkout]
 
   def show
-    if !user_session[:checkout]
-      user_session[:checkout] = "yes"
-    else
-      user_session[:checkout] = "no"
-    end
   end
 
   def checkout
-    
+    session[:checkout] = "no"
+    @current_cart = Cart.cart_checkout(@current_cart)
+    redirect_to cart_path
   end
 
   private

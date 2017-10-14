@@ -1,7 +1,7 @@
+
 <h1>Your Cart</h1>
 
 <%= render partial: 'cart', locals: {cart: @current_cart} %>
-
-<% if user_session[:checkout] == "yes" %>
-  <%= link_to 'Checkout Now', checkout_path(@current_cart) %>
+<% if !session[:checkout] %>
+  <%= button_to 'Checkout', checkout_path %>
 <% end %>
