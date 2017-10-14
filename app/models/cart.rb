@@ -30,6 +30,7 @@ class Cart < ActiveRecord::Base
       item.inventory = line_item.item.inventory - line_item.quantity
       item.save 
     end
+    
   end  
 
 end

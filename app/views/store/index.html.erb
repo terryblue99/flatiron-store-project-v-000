@@ -2,6 +2,7 @@
   <%= link_to category.title, category_path(category) %> |
 <% end %>
 <br><br>
+<% session[:checkout] = nil %>
 <% @items.each do |item| %>
   <% if item.inventory > 0 %>
     <%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %>
