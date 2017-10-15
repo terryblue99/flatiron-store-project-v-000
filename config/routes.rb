@@ -4,16 +4,17 @@ Rails.application.routes.draw do
   get '/home' => 'welcome#home'
   devise_for :users
 
-  # resources :sessions
   get '/signin' => 'sessions#new', as: :signin
   post '/signin' => 'sessions#create'
 
-  resources :items, only: [:show, :index]
+  authenticate :user do
+    resources :items, only: [:show, :index]
+    resources :carts
+    resources :line_items, only: [:create]
+    resources :orders, only: [:show]
+  end
+
   resources :categories, only: [:show, :index]
-  # resources :users
-  resources :carts
-  resources :line_items, only: [:create]
-  resources :orders, only: [:show]
 
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
 

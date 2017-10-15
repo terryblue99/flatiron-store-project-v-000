@@ -11,7 +11,7 @@ class CartsController < ApplicationController
     current_user.current_cart.update(:status => 'submitted')
     current_user.current_cart = nil
     current_user.save
-    redirect_to cart_path
+    redirect_to cart_path  
   end
 
   private

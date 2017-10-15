@@ -1,3 +1,4 @@
+<%= render 'shared/flash_messages' if flash.key?("not_signed_in") %>
 <br>
 <% @categories.each do |category| %>
   <%= link_to category.title, category_path(category) %> |
