@@ -4,5 +4,6 @@
 <%= render partial: 'cart', locals: {cart: @current_cart} %>
 
 <% if !session[:checkout] %>
-  <%= button_to 'Checkout', checkout_path %>
+  <%= button_to 'Checkout', checkout_path %><br>
+  <%= button_to 'Continue Shopping', session_path(current_user) %>
 <% end %>

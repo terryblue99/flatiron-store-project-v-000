@@ -4,15 +4,18 @@ class Cart < ActiveRecord::Base
   has_many :items, :through => :line_items
 
   def total
+
     line_items.collect {|i| i.item.price * i.quantity}.inject(:+)
+
   end
 
   def add_item(item_id)
+
     item = Item.find(item_id)
     line_item = line_items.detect {|li| li.item == item}
 
     if line_item
-      line_item.quantity = line_item.quantity + 1
+      line_item.quantity += 1
     else
       new_line_item = LineItem.new
       new_line_item.cart_id = self.id
@@ -25,6 +28,7 @@ class Cart < ActiveRecord::Base
   end
 
   def cart_checkout
+    
     self.line_items.each do |line_item|
       item = line_item.item
       item.inventory = line_item.item.inventory - line_item.quantity

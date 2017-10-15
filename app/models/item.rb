@@ -5,12 +5,15 @@ class Item < ActiveRecord::Base
 
   def self.available_items
     @items = []
+
     self.all.each do |item|
       if item.inventory > 0
         @items << item
       end
     end
+
     @items
+    
   end
 
 end

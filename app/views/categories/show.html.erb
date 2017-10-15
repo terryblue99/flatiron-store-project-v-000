@@ -2,12 +2,16 @@
 
 <ul>
 <% @category.items.each do |item| %>
+
   <% if item.inventory > 0 %>
+
   	<% if user_signed_in? %>
     	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %>    
     	<%= button_to 'Add to Cart', line_items_path(item_id: item) %><br>
     <% else %>
     	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %><br><BR>	
     <% end %>
+
   <% end %>
+  
 <% end %>

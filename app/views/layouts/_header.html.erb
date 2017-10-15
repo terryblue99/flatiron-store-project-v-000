@@ -1,7 +1,10 @@
 <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      
       <div class="container">
+
         <div class="navbar-header">
+
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -9,21 +12,35 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" <%= link_to "Store Home", store_path %></a>
+
         </div>
+
         <div class="navbar-collapse collapse">
+
           <ul class="nav navbar-nav">
            <!--  nav here -->
            <% if current_user %>
                <li><%= link_to "Signed in as #{current_user.email}", home_path(current_user) %></li>
+
                <% if current_user.current_cart %>
-                 <li><%= link_to "Cart", cart_path(current_user.current_cart) %></li>
+
+                 <li><%= link_to "Cart: #{session[:items_in_cart]}", cart_path(current_user.current_cart) %></li>
+
                <% end %>
+
                <li><%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %></li>
+
            <% else %>
+
                <li><%= link_to("Sign In", new_user_session_path) %></li>
                <li><%= link_to("Sign Up", new_user_registration_path) %></li>
+
            <% end %>
+
           </ul>
+
         </div><!--/.nav-collapse -->
-      </div><!--/ container -->
+
+      </div><!--/.container -->
+
     </div>
