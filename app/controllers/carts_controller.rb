@@ -7,16 +7,20 @@ class CartsController < ApplicationController
 
   def checkout
 
-    @current_cart.cart_checkout
-    current_user.current_cart.update(:status => 'submitted')
-    current_user.current_cart = nil
-    
-    current_user.save
+    if current_user.current_cart
+      @current_cart.cart_checkout
+      current_user.current_cart.update(:status => 'submitted')
+      current_user.current_cart = nil
 
-    session[:items_in_cart] = 0
-    session[:checkout] = "no"
+      current_user.save
 
-    redirect_to cart_path  
+      session[:items_in_cart] = 0
+      session[:checkout] = "no"
+
+      redirect_to cart_path
+    else
+      redirect_to store_path
+    end
 
   end
 

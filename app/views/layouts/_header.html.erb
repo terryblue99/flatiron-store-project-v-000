@@ -1,6 +1,6 @@
 <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      
+
       <div class="container">
 
         <div class="navbar-header">
@@ -20,7 +20,7 @@
           <ul class="nav navbar-nav">
            <!--  nav here -->
            <% if current_user %>
-               <li><%= link_to "Signed in as #{current_user.email}", home_path(current_user) %></li>
+               <li><%= link_to "Signed in as #{current_user.email}", store_path %></li>
 
                <% if current_user.current_cart %>
 

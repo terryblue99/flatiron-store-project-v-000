@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'store#index', as: 'store'
 
-  get '/home' => 'welcome#home'
-  
   devise_for :users
 
   authenticate :user do

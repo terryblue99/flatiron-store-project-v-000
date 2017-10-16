@@ -1,5 +1,10 @@
 <%= render 'shared/flash_messages' if flash.key?("not_signed_in") %>
 <br>
+<% if !session[:here_again] %>
+  <% session[:here_again] = "yes" %>
+  <% session[:items_in_cart] = 0 %>
+  <% session[:checkout] = nil %><br>
+<% end %>
 
 <% @categories.each do |category| %>
   <%= link_to category.title, category_path(category) %> |
@@ -7,22 +12,17 @@
 
 <br><br>
 
-<% session[:checkout] = nil %>
-<% if !session[:items_in_cart] %>
-	<% session[:items_in_cart] = 0 %>
-<% end %>
-
 <% @items.each do |item| %>
 
   <% if item.inventory > 0 %>
 
   	<% if user_signed_in? %>
-    	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %>    
+    	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %>
     	<%= button_to 'Add to Cart', line_items_path(item_id: item) %><br>
     <% else %>
-    	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %><br><BR>	
+    	<%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= "#{item.inventory} in stock" %><br><BR>
     <% end %>
-    
+
   <% end %>
 
 <% end %>
