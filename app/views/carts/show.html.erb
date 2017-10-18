@@ -3,12 +3,3 @@
 
 <%= render partial: 'cart', locals: {cart: @current_cart} %>
 
-<% if !session[:checkout] %>
-  <%= button_to 'Checkout', checkout_path %><br>
-  <%= button_to 'Continue Shopping', session_path(current_user) %>
-<% else %>
-  <h4>You have Checked Out</h4>
-  <% session[:checkout] = nil %>
-  <%= button_to 'Continue Shopping', session_path(current_user) %>
-  <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
-<% end %>

@@ -10,6 +10,7 @@ class LineItemsController < ApplicationController
 		l_item = current_user.current_cart.add_item(params[:item_id])
 		l_item.save
 		session[:items_in_cart] += 1
+		
 		redirect_to cart_path(current_user.current_cart)
 		
 	end

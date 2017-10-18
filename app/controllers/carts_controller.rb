@@ -18,8 +18,11 @@ class CartsController < ApplicationController
       session[:checkout] = "no"
 
       redirect_to cart_path
+      
     else
+
       redirect_to store_path
+
     end
 
   end

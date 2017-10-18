@@ -1,10 +1,6 @@
-<%= render 'shared/flash_messages' if flash.key?("not_signed_in") %>
 <br>
-<% if !session[:here_again] %>
-  <% session[:here_again] = "yes" %>
-  <% session[:items_in_cart] = 0 %>
-  <% session[:checkout] = nil %><br>
-<% end %>
+
+<% set_session %>
 
 <% @categories.each do |category| %>
   <%= link_to category.title, category_path(category) %> |
